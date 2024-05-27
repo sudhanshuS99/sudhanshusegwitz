@@ -1,0 +1,305 @@
+React
+- open source library for building ui
+- library, not a framework
+- focus on ui
+- rich ecosystem
+
+why learn?
+- created and maintained by meta
+- huge community
+- in demand skillset
+- component based architecture
+- uses declarative paradigm
+- seamless integration
+- modular approach to application design
+
+
+HELLO WORLD IN REACT JS
+some steps:
+METHOD 1: 
+- download nodejs
+- get into desired folder (created react folder inside the code subfolder for practice)
+- type "npx create-react-app folder-name {hello-world}
+- get inside hello-world folder
+- type "npm start"
+react will load its ui component saved in app.js in browser
+
+METHOD 2: (ALTERNATIVE METHOD)
+1. install npm create-react-app globally
+"npm install create-react-app -g"
+
+2. "create-react-app<project_name>
+
+advantage of method 1 over 2:
+- no need to update create-react-app package
+
+
+FOLDER STRUCTURE IN REACTJS:
+my-react-app/
+│
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── src/
+│   ├── assets/
+│   │   └── images/
+│   ├── components/
+│   │   ├── Header/
+│   │   │   ├── Header.js
+│   │   │   └── Header.css
+│   │   ├── Footer/
+│   │   │   ├── Footer.js
+│   │   │   └── Footer.css
+│   │   └── ...
+│   ├── pages/
+│   │   ├── Home/
+│   │   │   ├── Home.js
+│   │   │   └── Home.css
+│   │   ├── About/
+│   │   │   ├── About.js
+│   │   │   └── About.css
+│   │   └── ...
+│   ├── services/
+│   │   └── api.js
+│   ├── utils/
+│   │   └── helpers.js
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+│
+├── .gitignore
+├── package.json
+└── README.md
+
+1. package.json
+    - contains dependencies and scripts required for the project
+2. package-lock.json
+    - provides consistent installation of dependencies; essential for maintaining stability and reproducibility across development machines
+3. Node Modules
+    - folder in which all dependencies are installed
+4. public
+    - further contains 2 files
+    1. favicon.ico - icon for taskbar
+    2. index.html 
+        - the only html file in entire folder structure;
+        - the view might dynamically change but this is the file which renders in the browser
+        - almost no code is written here (may need to change/modify head tag but definitely not in body tag)
+        - react controls the ui
+        code : <div id="root"></div>
+        the above code allows the react to control ui 
+
+
+5. SRC FOLDER:
+assets
+    - holds static assets like images,fonts, etc.
+
+index.js
+    - starting point for react application
+    - specifies the root component
+    - specifies the dom element
+
+app.js
+    - represents the view which we see in the browser
+    - controls the html of the browser
+
+with the app.js, react also creates the css style for styling and test.js for testing 
+
+
+COMPONENTS:
+React applications are built from isolated pieces of UI called components. A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page.
+
+- represents the part of ui
+- reusable
+- can contain other components
+- used to render, manage, and update the UI elements in your application
+
+Component in code:
+- the component code is placed within a js file
+- the type of js file will depend on the type of component it contains
+
+TYPES OF COMPONENT:
+there are two types of components in react:
+- stateless functional component
+    - js functions
+    - they return html which describes the ui
+    EXAMPLE: 
+
+    function Welcome(props){
+        return <h1>Hello, {props.name}</h1>
+    }
+
+- stateful class component
+    - es6 class extending component class
+    - must contain a render method returning HTML
+
+component types in detail:
+# FUNCTIONAL COMPONENTS
+- they are javascript functions that receive the properties (props) and render the html (jsx) to describe the ui 
+- the convention is to use the arrow functions to define them
+
+NOTE:
+EXPORTING AND IMPORTING COMPONENTS:
+you can export components which is the main driving force behind react's modularity and reusability
+
+exporting can have two types:
+- named exports
+- default exports
+
+default exports allow imports with any name
+named exports only allow imports with MATCHING names therefore it is important to check.
+
+use cases:
+default export: when exporting only one Component
+named export: when exporting multiple components and values
+
+YOU CAN ONLY USE DEFAULT COMPONENT ONCE IN A file
+
+
+
+# CLASS COMPONENTS
+- es6 classes which can take props and render/output html in form of jsx.
+- apart from jsx, it also maintains a private internal state
+in simple words, it stores information that is private to that component and use it to render ui.
+
+
+DIFFERENCE BETWEEN FUNCTIONAL AND CLASS COMPONENTS:
+
+FUNCTIONAL
+- simple functions
+- use func. components as much as possible
+- absence of 'this' keyword as opposed to class components
+- used to create solution without using state
+- mainly responsible for ui
+- also called stateless/dumb/presentational
+
+CLASS
+- more feature rich
+- maintain their own private data - state
+- complex ui logic
+- provide lifecycle hooks
+- also called stateful/smart/container
+
+
+
+JSX
+JavaScript XML (JSX) - Extension to the Javascript language syntax
+Write XML-like code for elements and components
+have a tag name, attributes, children
+allows to write and render html in js
+it transpiles to pure JS which is understood by browsers 
+
+some notable syntax differences between HTML and jsx:
+Class -> className
+for -> htmlFor
+camelCase property naming convention
+
+
+PROPS
+React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
+- props are immutable
+- they have different syntax for:
+functional: 
+props.attribute-name
+class:
+this.props.attribute-name
+
+
+STATE
+- refers to an internal data storage mechanism that each component can maintain
+- used for handling dynamic ui changes
+- determines how a component behaves and renders
+- is managed within components
+
+
+DIFFERENCE BETWEEN PROPS AND STATE
+props
+- gets passed to components
+- function parameters
+- props are immutable
+- props - functional components
+- this.props - class components
+
+state
+- is managed within a component
+- variables declared in the function body
+- state can be changed
+- useState hook - functional component
+- this.state - class component
+
+
+extension : es7 react
+useful keybinds: rce: template for creating class component
+                rfce: template for creating functional component
+                rconst: template for constructor inside class component
+
+note: never make changes to state directly, always use setState method
+calls to setState are asynchronous
+to execute a code after a state change, do not place that method after the setState method, instead pass it in a callback function that is passed as a second
+
+
+DESTRUCTING PROPS AND STATE
+in functional component:
+two methods of destructuring props:
+1. destructuring in function parameter itself
+2. destructuring in function body by extracting the attributes from props
+
+in class components:
+- destructuring in class body inside render to extract attributes to be used.
+
+
+
+EVENT HANDLING:
+events: when user interacts wihth the site, it is called event
+event handling is the process of responding to events
+methods are camel cased
+
+common mistakes:
+- using parantheses:
+    when you use function parantheses, it becomes a function call instead of function
+
+event handling in class components:
+
+binding event handlers: 
+
+
+CDN (CONTENT DELIVERY NETWORKS)
+- CDN stands for Content Delivery Network. It was originally developed to speed up the delivery of static HTML content for users all around the world. Nowadays, a CDN should be used whenever HTTP traffic is served.
+- A CDN brings content closer to the user by deploying servers at hundreds of locations around the world. These server locations are called point of presence (POPs). Having many POPs all over the world ensures that every user can reach a fast Edge server close to them.
+- A modern CDN can also transform static content into more optimized formats, for example by minifying JavaScript bundles on the fly or transforming an image file from an old format to a a modern one like webp or avif.
+- A CDN terminates TLS connections at the edge server. This significantly reduces the latency for the user to establish an encrypted TCP connection.
+- A modern CDN brings two other major benefits: security and availability. A CDN can withstand many more hardware failures than the origin servers because it has copies of contents available in many locations.
+
+
+
+NPM(node package manager)
+- used to install, manage, and publish packages of code written in JavaScript and for managing dependencies in projects.
+- can install and pre-build packages to work with your project
+- two methods of installing packages:
+1. local install - will only be visible within a project scope and eacch project will have its own package, no sharing
+2. global install - will cover entire system
+npm saves time and effort by allowing you to use pre-written code written by others instead of writing everything from scratch.
+Code written by others has gone through testing and bug fixing and is generally more reliable.
+You first need to install Node.js which is the Javascript runtime environment.
+Once you have Node.js installed, npm is included as well.
+You can check if npm is installed by running the command node -v and npm -v in your terminal.
+To install a package locally, you can use the command npm install <package name> in your terminal.
+When you are using multiple packages in your project, you can keep track of them using a file called package.json.
+This file also stores information about your project like the name, version, author and github repo.
+The package.json file is useful especially if you want other people to be able to clone your project and have all the necessary packages installed.
+You can create a package.json file by running the command npm init in your terminal in your project folder.
+When you install a package, npm downloads the package files and stores them in a folder called node_modules.
+This folder can contain many subfolders because most packages have dependencies on other packages.
+You can see a list of all installed packages by running the command npm list in your terminal.
+npm packages are constantly updated with bug fixes and new features.
+Updating to a new major version of a package can break your code because major version updates are not backwards compatible.
+To avoid breaking your code, npm uses a system called semantic versioning.
+Semantic versioning uses three numbers separated by dots to specify the major, minor and patch version of a package.
+By default, npm will update a package to the latest minor or patch version when you run npm update in your terminal.
+You can also specify the exact version of the package that you want to install using the @symbol followed by the version number.
+
+
+PARCEL AND BABEL
+module bundler:
+- combine multiple js files and combine into single js file that can be used in browser to load the website
+- contains source code, dependencies, node_modules
