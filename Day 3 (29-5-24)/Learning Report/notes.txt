@@ -1,0 +1,56 @@
+Day 3
+
+Notes from react.dev learnings
+
+Component:
+reusable ui elements
+React component is a JavaScript function that you can sprinkle with markup
+React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!
+useful notes:
+- use parantheses after return statement
+- export default lets other functions know the main part of the component
+- never define component inside other components (don't nest them)
+instead, do a top definition and pass it using props
+
+
+In a React app, every piece of UI is a component.
+recap:
+React components are regular JavaScript functions except:
+
+    Their names always begin with a capital letter.
+    They return JSX markup.
+
+note: even the root file is a component and is exported to index.js
+
+//////////////////////////////////////////////////////////////////////////////
+
+IMPORTING AND EXPORTING Components
+exporting and importing components help react make its component more reusable and dynamic.
+there are two types of exports:
+- named exports - 
+- default exports
+
+both exports define how imports are to be made
+named export can be done as many times as possible whereas default exports can only be done once per component
+the syntax of both the exports:
+* named export:
+exporting syntax: export function Hello(){
+    ....
+}
+
+importing syntax: 
+import { Hello } from "Hello component file path"
+
+* default exports:
+exporting syntax: export default function Hey(){
+    .....
+}
+
+importing syntax:
+import Hey from "Hey component file path"
+
+some key points to remember:
+if you want to export multiple components from a single file, you should use named exports as there can only be a single default export
+so default export is used to export a single component
+
+WRITING MARKUP WITH JSX
