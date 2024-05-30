@@ -1,0 +1,20 @@
+MARKUP IN JSX:
+jsx is a syntax extension for JavaScript that allows developers to write HTML-like code inside a JavaScript file.
+the need for jsx:
+as the logic grows, the entanglement of html and js provides conciseness and better handling
+the rules of jsx:
+1. return a single root component
+- use a single fragment tag on all the elements that are present
+
+2. close all the tags:
+- no tags must be left open (jsx has stricter rules than html)
+
+3. camelCase most of the elements
+
+special notes:
+    1. JSX attributes inside quotes are passed as strings.
+    2. Curly braces let you bring JavaScript logic and variables into your markup.
+    3. They work inside the JSX tag content or immediately after = in attributes.
+    4. {{ and }} is not special syntax: it’s a JavaScript object tucked inside JSX curly braces.
+
+you can use curly braces effectively to produce jsx syntax which combines logic and content
