@@ -7,6 +7,7 @@ import {
 import React from "react";
 import HomePage from "./pages/HomePage";
 import MainLayout from "../src/layouts/MainLayout";
+import Hero from "./components/Hero";
 
 const router = createBrowserRouter(
   createRouterFromElements(
@@ -19,7 +20,8 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <>
-      return <RouterProvider router={router} />
+      <Navbar />
+      <Hero />
     </>
   );
 };

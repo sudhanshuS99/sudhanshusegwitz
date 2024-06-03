@@ -1,0 +1,8 @@
+react as ui tree
+react uses tree structure and model relationships between components in react app.
+render tree:
+composed of trees, nodes that represent components
+root node = root components
+
+roadmap:
+react doc -> scrimba -> pedrotech vid
