@@ -1,11 +1,13 @@
 import "./App.css";
 import Job from "./components/Job";
+import User from "./components/User";
+
 function App() {
-  const age = 15;
-  if (age >= 18) {
-    return <h1>over age</h1>;
-  } else {
-  }
+  // const age = 15;
+  // if (age >= 18) {
+  //   return <h1>over age</h1>;
+  // } else {
+  // }
   const users = [
     { name: "pedro", age: 21 },
     { name: "jake", age: 25 },
@@ -15,16 +17,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Job salary={90000} position="Senior SDE" company="Amazon" />
-      <Job salary={12000} position="Junior SDE" company="Google" />
-      <Job salary={10000} position="Project Manager" company="Netflix" />
-      */}
-      {names.map((users, key) => {
-        return (
-          <h1 key={key}>
-            {users.name} {users.age}
-          </h1>
-        );
+      {users.map((user, key) => {
+        return <User name={user.name} age={user.age} />;
       })}
     </div>
   );
