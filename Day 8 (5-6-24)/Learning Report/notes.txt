@@ -1,0 +1,9 @@
+component lifecycle methods:
+mounting
+updating
+unmounting
+
+influence of strict mode on mounting phase on component lifecycle
+the useEffect hook:
+
+axios library for fetching api data (not recommended but good for beginners) 
