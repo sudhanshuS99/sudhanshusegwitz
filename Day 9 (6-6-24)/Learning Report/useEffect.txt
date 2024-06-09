@@ -1,0 +1,12 @@
+why useEffect?
+- updating the document title to the current counter value
+- timer
+- redundancy of code
+
+useEffect: this hook lets you perform side effects in functional components
+it is a close replacement for componentDidMount, componentDidUpdate and ComponentWillUnmount
+
+how to use it?
+useEffect after render: useEffect hook is used after every single render;
+
+run effects only once: (stop re-rendering)   

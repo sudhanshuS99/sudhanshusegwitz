@@ -1,0 +1,19 @@
+hooks: features which allow you to use react features without having to write a class
+hooks dont work inside a class.
+why hooks?
+reason set 1:
+- complexity of this keyword
+- remember to bind event handlers in class components
+- classes don't minify very well and make hot reloading very unreliable
+
+reason set 2:
+no particular way to reuse stateful component logic
+NEED TO SHARE A USEFUL LOGIC IN A BETTER WAY
+
+reason set 3:
+create components for complex scenarios such as data fetching and subscribing to events
+related code is not organized in one place
+unrelated code in one place
+because of stateful logic, can't break into smaller components
+
+NOTE: CAN'T USE HOOKS INSIDE A CLASS components

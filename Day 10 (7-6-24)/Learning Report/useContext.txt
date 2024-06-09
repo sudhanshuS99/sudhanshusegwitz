@@ -1,0 +1,2 @@
+context:
+provides a way to pass the data through the component tree without having to pass props down manually at every level
