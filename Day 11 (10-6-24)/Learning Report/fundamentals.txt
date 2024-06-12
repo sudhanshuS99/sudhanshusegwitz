@@ -1,0 +1,10 @@
+react form handling:
+controlled components: 
+form elements whose value is controlled by react
+
+step for creation of controlled component:
+step 1: create a state that will control the input value 
+step 2: handle onchange event handler
+
+note: since its an older tutorial, using class components to demonstrate forms
+will update with useState Hook shortly 
