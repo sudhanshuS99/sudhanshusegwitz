@@ -1,0 +1,12 @@
+uses of use-form hook:
+1. managing form state:
+every form has a few moving parts that keep changing from the time a user loads the form to the time they submit it:
+
+- current value of every field in the form
+- whether a field has been interacted with
+- wheter a field's value has been changed
+- whether a form is invalid
+- whether a field contains errors
+
+
+form submission:

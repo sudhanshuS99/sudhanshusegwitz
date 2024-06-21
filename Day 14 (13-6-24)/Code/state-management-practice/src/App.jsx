@@ -1,16 +1,18 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
+
 const App = () => {
-  const [names, setNames] = useState([]);
+  const [count, setCount] = useState(10);
 
-  useEffect(() => {
-    fetch("/names.json")
-      .then((Response) => Response.json())
-      .then((data) => setNames(data));
-  }, []);
+  function addOne() {
+    count++;
+  }
 
-  return <div>Names: {names.join(", ")}</div>;
+  return (
+    <div className="App">
+      <button onClick={addOne}>Count = {count}</button>
+    </div>
+  );
 };
 
 export default App;
