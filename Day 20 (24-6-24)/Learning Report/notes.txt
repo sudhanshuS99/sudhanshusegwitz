@@ -1,0 +1,19 @@
+1. form state:
+every form has a few moving parts that keep changing from time a user loads the form to the time they submit it
+
+- current value of every field in the form
+- whether a field has been interacted with
+- whether a field's value has changed
+- whether a field is invalid
+- whether a field contains errors
+
+in code, it can be represented as an object with key value pairs
+
+2. form validation:
+react hook form supports various html validation rules:
+- required
+- minLength & maxLength
+- min & max
+- pattern
+
+noValida te: 
