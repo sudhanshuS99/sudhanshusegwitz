@@ -98,7 +98,7 @@ const ProductFeedbackForm = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FormControl component="fieldset" error={!!errors.buyProduct}>
-                <FormLabel component="legend">
+                <FormLabel component="legend" className="">
                   Will you buy the product?
                 </FormLabel>
                 <Controller
