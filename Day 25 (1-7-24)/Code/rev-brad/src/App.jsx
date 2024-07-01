@@ -1,9 +1,16 @@
-import React from "react";
-
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import HomeCard from "./components/HomeCard";
+import JobListings from "./components/JobListings";
+import ViewAllJobs from "./components/ViewAllJobs";
 const App = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Navbar />
+      <Hero />
+      <HomeCard />
+      <JobListings />
+      <ViewAllJobs />
     </div>
   );
 };
