@@ -1,86 +1,119 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Button from "./Button";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  TextField,
+  Button as MuiButton,
+} from "@mui/material";
 
 const FormTwo = () => {
-  const [buyDecision, setBuyDecision] = useState("");
-  const [improvements, setImprovements] = useState("");
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      buyDecision: "",
+      improvements: "",
+    },
+  });
 
-  const handleBuyDecisionChange = (e) => {
-    setBuyDecision(e.target.value);
+  const watchBuyDecision = watch("buyDecision");
+
+  // Custom validation for word limit
+  const validateWordLimit = (value) => {
+    if (value.split(/\s+/).length > 300) {
+      return "Maximum 300 words allowed";
+    }
+    return true;
   };
 
   const handleImprovementsChange = (e) => {
-    setImprovements(e.target.value);
+    const text = e.target.value;
+    setValue("improvements", text); // Update form state with the new value
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Buy decision:", buyDecision);
-    console.log("Improvements:", improvements);
+  const onSubmit = (data) => {
+    console.log("Form data:", data);
+    // Add your form submission logic here
+    // Redirect to success page or perform other actions
   };
 
   return (
     <div className="flex justify-center mt-5">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="bg-gray-700 text-white shadow-xl p-10 rounded w-full max-w-lg"
       >
-        <label className="block text-sm font-bold mb-2">
-          Will you buy this product?
-        </label>
-        <div className="mb-2">
-          <input
-            type="radio"
-            id="buy-yes"
-            name="buy-decision"
-            value="yes"
-            checked={buyDecision === "yes"}
-            onChange={handleBuyDecisionChange}
-          />
-          <label htmlFor="buy-yes" className="ml-2">
-            Yes
-          </label>
-        </div>
-        <div className="mb-2">
-          <input
-            type="radio"
-            id="buy-no"
-            name="buy-decision"
-            value="no"
-            checked={buyDecision === "no"}
-            onChange={handleBuyDecisionChange}
-          />
-          <label htmlFor="buy-no" className="ml-2">
-            No
-          </label>
-        </div>
-        <div className="mb-2">
-          <input
-            type="radio"
-            id="buy-improvement"
-            name="buy-decision"
-            value="needs improvement"
-            checked={buyDecision === "needs improvement"}
-            onChange={handleBuyDecisionChange}
-          />
-          <label htmlFor="buy-improvement" className="ml-2">
-            Needs Improvement
-          </label>
-        </div>
-
-        {buyDecision === "needs improvement" && (
-          <div className="mb-4">
-            <h3 className="text-sm font-bold mb-2">
-              Describe your improvements:
-            </h3>
-            <textarea
-              value={improvements}
-              onChange={handleImprovementsChange}
-              rows={4}
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+        <FormControl component="fieldset">
+          <FormLabel
+            component="legend"
+            className="block text-sm font-bold mb-2"
+          >
+            Will you buy this product?
+          </FormLabel>
+          <RadioGroup
+            {...register("buyDecision", {
+              required: "Please select an option",
+            })}
+          >
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel
+              value="needs improvement"
+              control={<Radio />}
+              label="Needs Improvement"
             />
+          </RadioGroup>
+        </FormControl>
+
+        {watchBuyDecision === "needs improvement" && (
+          <div className="mb-4">
+            <TextField
+              {...register("improvements", {
+                required: "Please describe improvements needed",
+                validate: validateWordLimit, // Custom validation for word limit
+              })}
+              onChange={handleImprovementsChange} // Update form state as user types
+              multiline
+              rows={4}
+              variant="outlined"
+              fullWidth
+              inputProps={{ maxLength: 300 }}
+              className={`mt-3 ${errors.improvements ? "border-red-500" : ""}`}
+            />
+            {errors.improvements && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.improvements.message}
+              </p>
+            )}
           </div>
         )}
+
+        {errors.buyDecision && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.buyDecision.message}
+          </p>
+        )}
+
+        <div>
+          <MuiButton
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="mt-3"
+          >
+            Submit
+          </MuiButton>
+        </div>
       </form>
     </div>
   );
