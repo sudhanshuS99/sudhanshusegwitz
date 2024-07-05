@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
+import Videos from "./Videos";
+import { fetchFromAPI } from "../utils/FetchFromAPI";
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+
+  useEffect(() => {
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+  }, [selectedCategory]);
+
   return (
     <Stack
       sx={{
@@ -16,7 +24,10 @@ const Feed = () => {
           px: { sx: 0, md: "2" },
         }}
       >
-        <Sidebar />
+        <Sidebar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         <Typography
           className="copyright"
           variant="body2"
@@ -24,6 +35,19 @@ const Feed = () => {
         >
           Copyright 2024 Segwitz
         </Typography>
+      </Box>
+      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{
+            color: "white",
+          }}
+        >
+          New <span style={{ color: "#FC1503" }}>videos</span>
+        </Typography>
+        <Videos videos={[]} />
       </Box>
     </Stack>
   );
